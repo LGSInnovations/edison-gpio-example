@@ -1,0 +1,16 @@
+{
+  "name": "edison-gpio-example",
+  "version": "0.0.0",
+  "description": "a gpio example on the edison ethernet block",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

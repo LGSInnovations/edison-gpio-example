@@ -1,0 +1,11 @@
+{
+  "name": "edison-gpio-example",
+  "version": "1.0.0",
+  "description": "a gpio example using nodejs for the edison ethernet block",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cheisterkamp",
+  "license": "ISC"
+}

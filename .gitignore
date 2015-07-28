@@ -1,0 +1,6 @@
+c/lib
+bower_components
+node_modules
+
+*.swp
+.DS_Store
