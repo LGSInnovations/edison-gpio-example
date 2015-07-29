@@ -45,8 +45,7 @@ hwHandler = {
                 var gpio = pinMap(_config[i].mraa);
 
                 if (_config[i].direction === m.DIR_IN) {
-                    pin.isr(m.EDGE_RISING, isr(gpio, true));
-                    pin.isr(m.EDGE_FALLING, isr(gpio, false));
+                    pin.isr(m.EDGE_BOTH, isr(gpio));
                 } else {
                     pin.dir(_config[i].direction);
                 }
@@ -72,11 +71,11 @@ hwHandler = {
         return _states[index];
     },
 
-    toggle: function(gpio) {
+    toggle: function(gpio, noWrite) {
         var index = getIndexByGPIO(gpio);
         var value = !_states[index].value;
         var bit = (value) ? 1 : 0;
-        _gpios[gpio].write(bit);
+        if (!noWrite) _gpios[gpio].write(bit);
         setState(gpio, value);
     }
 };
@@ -108,12 +107,10 @@ function pinMap(mraa){
     return -1;
 }
 
-function isr(gpio, rising){
+function isr(gpio){
     return function() {
-        socket.broadcast("btnPressed", {
-            gpio: gpio,
-            value: rising
-        })
+        hwHandler.toggle(gpio, true);
+        socket.broadcast("btnPressed", hwHandler.getState(gpio));
     };
 }
 
