@@ -46,7 +46,7 @@ hwHandler = {
                 var gpio = pinMap(_config[i].mraa);
 
                 _gpios[gpio] = pin;
-                
+
                 var bool = (_gpios[gpio].read()) ? true : false;
                 setState(gpio, bool);
             }
@@ -65,7 +65,7 @@ hwHandler = {
     },
 
     toggle: function(gpio) {
-        var index = getIndexByGPIO;
+        var index = getIndexByGPIO(gpio);
         var value = !_states[index].value;
         var bit = (value) ? 1 : 0;
         _gpios[gpio].write(bit);
