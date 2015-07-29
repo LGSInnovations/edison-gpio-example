@@ -17,6 +17,7 @@ var morgan      = require('morgan');                // Logging for dev
 var path        = require('path');                  // filesystem goodies
 
 var api         = require('./app/api');             // API routes
+var hwHandler   = require('./app/hwHandler');		// Hardware stuff
 
 var port        = process.env.PORT || 8080;         // If no env var set, DEV mode
 
@@ -29,6 +30,8 @@ global.__base = __dirname + '/';                    // so child modules can acce
 app.use(bodyParser.json());                         // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(morgan('dev'));                             // For request logging
+
+hwHandler.initStates();
 
 // ----------------------------------------------------------------------------
 // Custom Middleware
