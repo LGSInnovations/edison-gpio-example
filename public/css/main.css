@@ -44,6 +44,27 @@ html, body {
     line-height: 6px;
     font-size: 1em;
     margin-top: 3px;
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+.gpio-buttons button:hover {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+
+.gpio-buttons button.on:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+
+.gpio-buttons button.on {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
 }
 
 .gpio-buttons button:nth-child(1) { top: 0; }
@@ -60,13 +81,13 @@ html, body {
     right: 312px;
 }
 
-.gpio-leds .led-off { background-color: grey; }
-.gpio-leds .led-on.red { background-color: red; }
-.gpio-leds .led-on.yellow { background-color: #FFD800; }
-.gpio-leds .led-on.green { background-color: #00A400; }
-.gpio-leds .led-on.blue { background-color: blue; }
+.gpio-leds .on.red { background-color: red; }
+.gpio-leds .on.yellow { background-color: #FFD800; }
+.gpio-leds .on.green { background-color: #00A400; }
+.gpio-leds .on.blue { background-color: blue; }
 
 .gpio-leds .led {
+    background-color: grey;
     position: absolute;
     width: 20px;
     height: 20px;

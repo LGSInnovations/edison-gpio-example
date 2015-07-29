@@ -1,7 +1,15 @@
 var express     = require('express');
 var router      = express.Router();   
 
-var gpioStates  = [{pin:31, value:0}];
+var gpioStates  = [
+	{ gpio:44, value:false },
+	{ gpio:45, value:true },
+	{ gpio:46, value:false },
+	{ gpio:47, value:true },
+	{ gpio:48, value:false },
+	{ gpio:49, value:false },
+	{ gpio:15, value:true }
+];
 
 // get current state of gpio
 router.get('/gpio', function (req, res) {
@@ -9,10 +17,10 @@ router.get('/gpio', function (req, res) {
 
 });
 
-//set current state of individual pin
-router.post('/gpio/:pin', function (req, res) {
-    var pin = req.params.pin;
-    res.send(pin);
+//set current state of individual gpio
+router.post('/gpio/:gpio', function (req, res) {
+    var gpio = req.params.gpio;
+    res.json({gpio:gpio, value:true});
 
 });
 
