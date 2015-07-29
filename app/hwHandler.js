@@ -46,7 +46,9 @@ hwHandler = {
                 var gpio = pinMap(_config[i].mraa);
 
                 _gpios[gpio] = pin;
-                setState(gpio, _gpios[gpio].read());
+                
+                var bool = (_gpios[gpio].read()) ? true : false;
+                setState(gpio, bool);
             }
         } catch (ex) {
             console.error("This system does not support mraa");
@@ -55,6 +57,19 @@ hwHandler = {
 
     getStates: function() {
         return _states;
+    },
+
+    getState: function(gpio) {
+        var index = getIndexByGPIO(gpio);
+        return _states[index];
+    },
+
+    toggle: function(gpio) {
+        var index = getIndexByGPIO;
+        var value = !_states[index].value;
+        var bit = (value) ? 1 : 0;
+        _gpios[gpio].write(bit);
+        setState(gpio, value);
     }
 };
 

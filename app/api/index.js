@@ -13,9 +13,9 @@ router.get('/gpio', function (req, res) {
 router.post('/gpio/:gpio', function (req, res) {
     var gpio = parseInt(req.params.gpio);
 
-    hwHandler.setState(gpio, true);
+    hwHandler.toggle(gpio);
 
-    res.json(hwHandler.getStates());
+    res.json(hwHandler.getState(gpio));
 
 });
 
