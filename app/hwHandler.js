@@ -71,11 +71,11 @@ hwHandler = {
         return _states[index];
     },
 
-    toggle: function(gpio, noWrite) {
+    toggle: function(gpio) {
         var index = getIndexByGPIO(gpio);
         var value = !_states[index].value;
         var bit = (value) ? 1 : 0;
-        if (!noWrite) _gpios[gpio].write(bit);
+        _gpios[gpio].write(bit);
         setState(gpio, value);
     }
 };
@@ -109,8 +109,17 @@ function pinMap(mraa){
 
 function isr(gpio){
     return function() {
-        hwHandler.toggle(gpio, true);
-        socket.broadcast("btnPressed", hwHandler.getState(gpio));
+        var oldValue = _gpios[gpio].read();
+
+        // debounce the button
+        setTimeout(function() {
+            var value = _gpios[gpio].read();
+            if (oldValue == value) {
+                setState(gpio, value);
+                socket.broadcast("btnPressed", hwHandler.getState(gpio));
+            }
+        }, 15);
+        
     };
 }
 
