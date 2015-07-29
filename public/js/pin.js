@@ -16,7 +16,7 @@ var Pin = function Pin(gpio, value) {
             handlePinState(data.value);
         };
 
-        if(data){
+        if(data.gpio){
             onSuccess(data);
         } else {
             sendRequest(onSuccess);
