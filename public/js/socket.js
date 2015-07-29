@@ -4,10 +4,20 @@ socket.on('connect', function() {
     console.log("I've connected!")
 });
 
-socket.on("some event", function(data) {
+socket.on("btnPressed", function(data) {
     // Log the data I received
     console.log(data);
- 
-    // Send a message to the server
-    socket.emit("other event", {some: "data"});
+    
+    var index = getIndexByGPIO(data.gpio);
+    var pin = _pins[index];
+    pin.toggle(data);
 });
+
+function getIndexByGPIO(gpio) {
+    for (var i=0; i<_pins.length; i++) {
+        if (gpio === _pins[i].getGPIO()) {
+            return i;
+        }
+    }
+    return -1;
+}

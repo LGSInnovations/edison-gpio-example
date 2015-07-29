@@ -11,12 +11,17 @@ var Pin = function Pin(gpio, value) {
     // Public Methods
     // ------------------------------------------------------------------------
 
-    this.toggle = function() {
+    this.toggle = function(data) {
         var onSuccess = function(data){
             handlePinState(data.value);
         };
 
-        sendRequest(onSuccess);
+        if(data){
+            sendRequest(onSuccess);
+        } else {
+            onSuccess(data);
+        }
+        
     };
 
     this.getGPIO = function() { return _gpio; };

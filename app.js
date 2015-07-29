@@ -60,4 +60,4 @@ console.log('Server started on port ' + port);
 // Socket.io Event Handler
 // ----------------------------------------------------------------------------
 
-socket(io);
+socket.handle(io);

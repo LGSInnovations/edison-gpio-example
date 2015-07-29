@@ -1,4 +1,5 @@
-var m = require('mraa');
+var m      = require('mraa');
+var socket = require('./socket');
 
 var _map = [
     { mraa: 31, gpio:44 },
@@ -41,14 +42,16 @@ hwHandler = {
         try {
             for(var i = 0; i < _config.length; i++) {
                 var pin = new m.Gpio(_config[i].mraa);
-                
+                var gpio = pinMap(_config[i].mraa);
+
                 if (_config[i].direction === m.DIR_IN) {
-                    pin.isr(m.EDGE_BOTH, isr);
+                    pin.isr(m.EDGE_RISING, isr(gpio, true));
+                    pin.isr(m.EDGE_FALLING, isr(gpio, false));
                 } else {
                     pin.dir(_config[i].direction);
                 }
 
-                var gpio = pinMap(_config[i].mraa);
+                
 
                 _gpios[gpio] = pin;
 
@@ -71,11 +74,11 @@ hwHandler = {
         return _states[index];
     },
 
-    toggle: function(gpio) {
+    toggle: function(gpio, noWrite) {
         var index = getIndexByGPIO(gpio);
         var value = !_states[index].value;
         var bit = (value) ? 1 : 0;
-        _gpios[gpio].write(bit);
+        if(!noWrite) _gpios[gpio].write(bit);
         setState(gpio, value);
     }
 };
@@ -107,9 +110,13 @@ function pinMap(mraa){
     return -1;
 }
 
-function isr(a){
-    console.log(a);
+function isr(gpio, rising){
+    hwHandler.toggle(gpio, true);
+    return function() {
+        socket.broadcast("btnPressed", hwHandler.getState(gpio))
+    };
 }
+
 
 // ----------------------------------------------------------
 
