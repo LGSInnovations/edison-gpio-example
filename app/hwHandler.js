@@ -40,10 +40,10 @@ hwHandler = {
 	initStates: function() {
 		try {
 			for(var i = 0; i < _config.length; i++){
-				var pin = new m.Gpio(_config.mraa);
-				pin.dir(_config.direction);
+				var pin = new m.Gpio(_config[i].mraa);
+				pin.dir(_config[i].direction);
 
-				var gpio = pinMap(_config.mraa);
+				var gpio = pinMap(_config[i].mraa);
 
 				_gpios[gpio] = pin;
 				setState(gpio, _gpios[gpio].read());
