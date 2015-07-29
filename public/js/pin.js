@@ -17,9 +17,9 @@ var Pin = function Pin(gpio, value) {
         };
 
         if(data){
-            sendRequest(onSuccess);
-        } else {
             onSuccess(data);
+        } else {
+            sendRequest(onSuccess);
         }
         
     };

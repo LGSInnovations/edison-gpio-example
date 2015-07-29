@@ -44,11 +44,13 @@ hwHandler = {
                 var pin = new m.Gpio(_config[i].mraa);
                 var gpio = pinMap(_config[i].mraa);
 
+                pin.dir(_config[i].direction);
+
                 if (_config[i].direction === m.DIR_IN) {
                     pin.isr(m.EDGE_RISING, isr(gpio, true));
                     pin.isr(m.EDGE_FALLING, isr(gpio, false));
                 } else {
-                    pin.dir(_config[i].direction);
+                    // pin.dir(_config[i].direction);
                 }
 
                 
