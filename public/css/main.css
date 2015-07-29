@@ -16,7 +16,17 @@ html, body {
     left: -100px;
 }
 
-.img-container img {
+.img-container .edison {
+    position: absolute;
+    float: left;
+    z-index: 100;
+    transform: rotate(90deg);
+    width: 48%;
+    top: 113px;
+    left: 180px;
+}
+
+.img-container .gpio {
     height: 700px;
     width: 700px;
 }
