@@ -13,11 +13,13 @@
 var express     = require('express');               // Easy API routing
 var app         = express();                        // Create the app
 var bodyParser  = require('body-parser');           // Parses POST JSON automagically
+var socketio    = require('socket.io');
 var morgan      = require('morgan');                // Logging for dev
 var path        = require('path');                  // filesystem goodies
 
 var api         = require('./app/api');             // API routes
 var hwHandler   = require('./app/hwHandler');		// Hardware stuff
+var socket      = require('./app/socket');          // socket
 
 var port        = process.env.PORT || 8080;         // If no env var set, DEV mode
 
@@ -51,5 +53,11 @@ app.use('/api', api);                                           // all API reque
 // Listen (start app: `node app.js`)
 // ----------------------------------------------------------------------------
 
-app.listen(port);
+var io = socketio.listen(app.listen(port));
 console.log('Server started on port ' + port);
+
+// ----------------------------------------------------------------------------
+// Socket.io Event Handler
+// ----------------------------------------------------------------------------
+
+socket(io);

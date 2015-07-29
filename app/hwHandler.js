@@ -39,9 +39,14 @@ var _gpios = {};
 hwHandler = {
     initStates: function() {
         try {
-            for(var i = 0; i < _config.length; i++){
+            for(var i = 0; i < _config.length; i++) {
                 var pin = new m.Gpio(_config[i].mraa);
-                pin.dir(_config[i].direction);
+                
+                if (_config[i].direction === m.DIR_IN) {
+                    pin.isr(m.EDGE_BOTH, isr);
+                } else {
+                    pin.dir(_config[i].direction);
+                }
 
                 var gpio = pinMap(_config[i].mraa);
 
@@ -49,6 +54,8 @@ hwHandler = {
 
                 var bool = (_gpios[gpio].read()) ? true : false;
                 setState(gpio, bool);
+
+                
             }
         } catch (ex) {
             console.error("This system does not support mraa");
@@ -98,6 +105,10 @@ function pinMap(mraa){
         }
     }
     return -1;
+}
+
+function isr(a){
+    console.log(a);
 }
 
 // ----------------------------------------------------------
