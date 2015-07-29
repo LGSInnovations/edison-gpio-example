@@ -11,14 +11,28 @@ html, body {
 }
 
 .gpio-image {
+    position: absolute;
     background: url('/assets/gpio.jpg') no-repeat bottom center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
+    width: 100%;
 }
 
-.jumbotron p {
-    font-size: 1.2em
+.gpio-image button {
+    position: absolute;
+    right: 28%;
+    line-height: 65%;
+    font-style: 1em;
 }
+
+.gpio-image button:nth-child(1) { bottom: 26.4%; }
+.gpio-image button:nth-child(2) { bottom: 23.2%; }
+.gpio-image button:nth-child(3) { bottom: 20%;   }
+.gpio-image button:nth-child(4) { bottom: 16.5%; }
+.gpio-image button:nth-child(5) { bottom: 13%;   }
+.gpio-image button:nth-child(6) { bottom: 9.7%;  }
+.gpio-image button:nth-child(7) { bottom: 6.2%;  }
+.gpio-image button:nth-child(8) { bottom: 2.7%;  }
