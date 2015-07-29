@@ -6,33 +6,68 @@ html, body {
     height: 80%;
 }
 
+.max-height {
+    height: 100%;
+}
+
 .img-container {
-    height: 100%;
-}
-
-.gpio-image {
     position: absolute;
-    background: url('/assets/gpio.jpg') no-repeat bottom center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+    display: inline-block;
+    left: -100px;
 }
 
-.gpio-image button {
+.img-container img {
+    height: 700px;
+    width: 700px;
+}
+
+.gpio-buttons {
     position: absolute;
-    right: 28%;
-    line-height: 65%;
-    font-style: 1em;
+    display: inline-block;
+    bottom: 70px;
+    right: 240px;
 }
 
-.gpio-image button:nth-child(1) { bottom: 26.4%; }
-.gpio-image button:nth-child(2) { bottom: 23.2%; }
-.gpio-image button:nth-child(3) { bottom: 20%;   }
-.gpio-image button:nth-child(4) { bottom: 16.5%; }
-.gpio-image button:nth-child(5) { bottom: 13%;   }
-.gpio-image button:nth-child(6) { bottom: 9.7%;  }
-.gpio-image button:nth-child(7) { bottom: 6.2%;  }
-.gpio-image button:nth-child(8) { bottom: 2.7%;  }
+.gpio-buttons button {
+    position: relative;
+    display: block;
+    line-height: 6px;
+    font-size: 1em;
+    margin-top: 3px;
+}
+
+.gpio-buttons button:nth-child(1) { top: 0; }
+.gpio-buttons button:nth-child(2) { top: 1px; }
+.gpio-buttons button:nth-child(3) { top: 2px;   }
+.gpio-buttons button:nth-child(4) { top: 3px; }
+.gpio-buttons button:nth-child(5) { top: 4px;   }
+.gpio-buttons button:nth-child(6) { top: 5px;  }
+
+.gpio-leds {
+    position: absolute;
+    display: inline-block;
+    bottom: 207px;
+    right: 312px;
+}
+
+.gpio-leds .led-off { background-color: grey; }
+.gpio-leds .led-on.red { background-color: red; }
+.gpio-leds .led-on.yellow { background-color: #FFD800; }
+.gpio-leds .led-on.green { background-color: #00A400; }
+.gpio-leds .led-on.blue { background-color: blue; }
+
+.gpio-leds .led {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    border-radius: 100px;
+}
+
+.gpio-leds .led:nth-child(1) { top: 1px; }
+.gpio-leds .led:nth-child(2) { top: 25px; }
+.gpio-leds .led:nth-child(3) { top: 50px; }
+.gpio-leds .led:nth-child(4) { top: 75px; }
+.gpio-leds .led:nth-child(5) { top: 98px; }
+.gpio-leds .led:nth-child(6) { top: 121px; }
+.gpio-leds .led:nth-child(7) { top: 144px; }
