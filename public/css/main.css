@@ -1,4 +1,24 @@
+html, body {
+    height: 100%;
+}
+
+.img-row {
+    height: 80%;
+}
+
+.img-container {
+    height: 100%;
+}
 
 .gpio-image {
-	background-image: url('/assets/gpio.jpg');
+    background: url('/assets/gpio.jpg') no-repeat bottom center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+.jumbotron p {
+    font-size: 1.2em
 }
