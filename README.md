@@ -1,7 +1,7 @@
 Edison GPIO Example
 ===================
 
-This demo is to show how to control the Edison's GPIOs using a web interface with a NodeJS server running on the Edison.
+This demo is to show how to control the Edison's GPIOs using a web interface with a NodeJS server running on the Edison, with the [Edison Ethernet](https://github.com/LGSInnovations/Edison-Ethernet) board.
 
 ### Software Setup ###
 
