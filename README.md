@@ -46,7 +46,7 @@ The following pin configuration is assumed, using the [SparkFun GPIO Block](http
 | GP47     | Red LED                         | 46                 |
 | GP48     | Yellow LED                      | 33                 |
 | GP49     | Green LED                       | 47                 |
-| GP15     | btn tied high with 1K pull-down | 48                 |
+| GP15     | Button tied high w/ 1K pull-down| 48                 |
 | GP14     | Unused                          | 36                 |
 
 ![Edison Ethernet with populated GPIO Block](extra/edison-ethernet-gpio.jpg)
