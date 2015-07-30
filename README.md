@@ -49,4 +49,4 @@ The following pin configuration is assumed, using the [SparkFun GPIO Block](http
 | GP15     | btn tied high with 1K pull-down | 48                 |
 | GP14     | Unused                          | 36                 |
 
-![Edison Ethernet with populated GPIO Block](extra/edison-ethernet-gpio.png)
+![Edison Ethernet with populated GPIO Block](extra/edison-ethernet-gpio.jpg)
