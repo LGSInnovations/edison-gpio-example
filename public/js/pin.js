@@ -1,3 +1,5 @@
+// A Pin object that will return a new pin on every invocation.
+// Each obj keeps track of the pin state and controlls the UI.
 var Pin = function Pin(gpio, value) {
 
     var API_GPIO = "/api/gpio/";
@@ -16,7 +18,9 @@ var Pin = function Pin(gpio, value) {
             handlePinState(data.value);
         };
 
-        if(data.gpio){
+        // If data is passed in, don't request more data from server,
+        // just pass in the data directly to the onSuccess callback.
+        if (data.gpio) {
             onSuccess(data);
         } else {
             sendRequest(onSuccess);
@@ -57,5 +61,5 @@ var Pin = function Pin(gpio, value) {
             _button.html("off");
         }
     }
-    handlePinState(_value);
+    handlePinState(_value);               // Initialize the UI on obj creation
 };

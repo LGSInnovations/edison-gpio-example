@@ -1,9 +1,11 @@
 /******************************************************************************
- *                          MEAN Skeleton Example
+ *                            Edison GPIO Example
  ******************************************************************************
- * Here is some information about my app.
+ * This example app uses a RESTful API and WebSockets to communicate the state
+ * of the hardware to the user. It was built to be a demo for the Edison
+ * Ethernet board (https://github.com/LGSInnovations/Edison-Ethernet).
  *
- * This app also exposes a RESTful API for data manipulation.
+ * This app structure modeled afer https://github.com/plusk01/mean-skeleton.
  *
 **/
 
@@ -34,12 +36,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(morgan('dev'));                             // For request logging
 
 hwHandler.initStates();
-
-// ----------------------------------------------------------------------------
-// Custom Middleware
-// ----------------------------------------------------------------------------
-
-//app.use(require('./app/middleware/basic-auth')());  // Basic auth
 
 // ----------------------------------------------------------------------------
 // Routes

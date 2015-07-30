@@ -5,7 +5,6 @@ socket.on('connect', function() {
 });
 
 socket.on("btnPressed", function(data) {
-    // Log the data I received
     console.log(data);
     
     var index = getIndexByGPIO(data.gpio);

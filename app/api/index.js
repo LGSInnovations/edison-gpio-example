@@ -6,7 +6,6 @@ var hwHandler	= require('../hwHandler');
 // get current state of gpio
 router.get('/gpio', function (req, res) {
     res.json(hwHandler.getStates());
-
 });
 
 //set current state of individual gpio
@@ -15,8 +14,9 @@ router.post('/gpio/:gpio', function (req, res) {
 
     hwHandler.toggle(gpio);
 
+    // send back the current state so the frontend
+    // can make it the LED look pretty
     res.json(hwHandler.getState(gpio));
-
 });
 
 module.exports = router;
