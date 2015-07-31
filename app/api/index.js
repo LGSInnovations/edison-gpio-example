@@ -1,6 +1,7 @@
 var express     = require('express');
 var router      = express.Router();
 
+var socket      = require('../socket');
 var hwHandler	= require('../hwHandler');
 
 // get current state of gpio
