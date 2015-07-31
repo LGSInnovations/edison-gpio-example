@@ -14,6 +14,7 @@ router.post('/gpio/:gpio', function (req, res) {
 
     hwHandler.toggle(gpio);
 
+    socket.broadcast("ledPressed", hwHandler.getState(gpio));
     // send back the current state so the frontend
     // can make it the LED look pretty
     res.json(hwHandler.getState(gpio));
