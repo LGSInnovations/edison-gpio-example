@@ -1,5 +1,4 @@
-var m      = require('mraa');
-
+var m      = require('./mraa-wrapper');
 var socket = require('./socket');
 
 // MRAA has different pin numbers than the GPIO block.
@@ -49,30 +48,24 @@ hwHandler = {
     initStates: function() {
         // Loop through _config to initialize the appropriate
         // pins. Add pins to _gpios indexed with GPIO number.
-        try {
-            for(var i = 0; i < _config.length; i++) {
-                var pin = new m.Gpio(_config[i].mraa);
-                var gpio = pinMap(_config[i].mraa);
+        for(var i = 0; i < _config.length; i++) {
+            var pin = new m.Gpio(_config[i].mraa);
+            var gpio = pinMap(_config[i].mraa);
 
-                if (_config[i].direction === m.DIR_IN) {
-                    // If a button, set up an ISR for that
-                    // particular button
-                    pin.isr(m.EDGE_BOTH, isr(gpio));
-                } else {
-                    pin.dir(_config[i].direction);
-                }
-
-                _gpios[gpio] = pin;
-
-                // Decode 1:0 to true:false and save in _states
-                var bool = (_gpios[gpio].read()) ? true : false;
-                setState(gpio, bool);
-
-                
+            if (_config[i].direction === m.DIR_IN) {
+                // If a button, set up an ISR for that
+                // particular button
+                pin.isr(m.EDGE_BOTH, isr(gpio));
+            } else {
+                pin.dir(_config[i].direction);
             }
-        } catch (ex) {
-            // An exception is thrown if running app off Edison
-            console.error("This system does not support mraa");
+
+            _gpios[gpio] = pin;
+
+            // Decode 1:0 to true:false and save in _states
+            var bool = (_gpios[gpio].read()) ? true : false;
+            setState(gpio, bool);
+
         }
     },
 
